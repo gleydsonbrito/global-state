@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png'
+import spinner from '../assets/spinner.gif'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [username, setUserName] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [erro, setErro] = useState<string>('')
 
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault()
+    setIsLoading(true)
     setErro('')
     const fetchLogin = async () => {
       try {
@@ -51,11 +54,12 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)} />
         {erro && <p className="text-red-500 text-[0.5rem]">{erro}</p>}
-        <input
-          className='px-2 bg-blue-200 w-full rounded-md text-gray-600 shadow-md disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed'
+        <button
+          className='px-2 bg-blue-200 w-full rounded-md text-gray-600 shadow-md disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed flex items-center justify-center'
           type="submit"
-          value="Entrar"
-          disabled={!username || !password} />
+          disabled={!username || !password}>
+              {isLoading ? <img className='w-8 h-auto self-center' src={spinner}/> : "Entrar"}
+        </button>
       </form>
     </div>
   )
