@@ -12,9 +12,9 @@ function Login() {
 
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault()
-    setIsLoading(true)
     setErro('')
     const fetchLogin = async () => {
+      setIsLoading(true)
       try {
         const response = await fetch('https://dummyjson.com/auth/login',
           {
@@ -28,6 +28,7 @@ function Login() {
         const userData = await response.json()
         localStorage.setItem('accessToken', userData.accessToken)
         navigate('/main/products')
+
       } catch (err) {
         setErro(`Algo inesperado aconteceu. ${err}`)
       }
@@ -58,7 +59,7 @@ function Login() {
           className='px-2 bg-blue-200 w-full rounded-md text-gray-600 shadow-md disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed flex items-center justify-center'
           type="submit"
           disabled={!username || !password}>
-              {isLoading ? <img className='w-8 h-auto self-center' src={spinner}/> : "Entrar"}
+          {isLoading ? <img className='w-8 h-auto self-center' src={spinner} /> : "Entrar"}
         </button>
       </form>
     </div>
