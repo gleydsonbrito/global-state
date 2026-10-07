@@ -10,11 +10,11 @@ export default function Header() {
   return (
     <header className='p-4 h-[4rem] bg-[#FFA500] flex items-center'>
       <nav className='w-full flex justify-between items-center'>
-        <Link to='/products' className='cursor-pointer'>
+        <Link to='/main/products' className='cursor-pointer'>
           <img className='w-[3.5rem] h-auto transition-transform duration-300 hover:scale-102' src={logo} alt="" />
         </Link>
         <div className='flex gap-8'>
-          <Link to='/favorites' className='text-white hover:bg-[#df9205] px-2 hover:px-2 hover:rounded-md hover:shadow-md transition-transform duration-300 hover:scale-102'>Favoritos</Link>
+          <Link to='/main/favorites' className='text-white hover:bg-[#df9205] px-2 hover:px-2 hover:rounded-md hover:shadow-md transition-transform duration-300 hover:scale-102'>Favoritos</Link>
           <button onClick={handleLogout} className='text-[0.7rem] px-2 bg-white rounded-sm shadow-md text-gray-600 transition-transform duration-300 hover:scale-102'>Sair</button>
         </div>
       </nav>

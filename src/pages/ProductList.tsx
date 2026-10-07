@@ -1,5 +1,4 @@
 import ProtectRoute from '../components/ProtectRoute'
-import Header from '../components/Header'
 import Product from '../components/ProductCard'
 import { useEffect, useState } from 'react';
 import type IProduct from '../interfaces/types'
@@ -37,7 +36,6 @@ export default function ProductList() {
   return (
     <ProtectRoute>
       <div>
-        <Header />
         <main className="px-8 py-6 bg-gray-100 min-h-screen">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map(product => {

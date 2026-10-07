@@ -27,7 +27,7 @@ function Login() {
 
         const userData = await response.json()
         localStorage.setItem('accessToken', userData.accessToken)
-        navigate('/products')
+        navigate('/main/products')
       } catch (err) {
         setErro(`Algo inesperado aconteceu. ${err}`)
       }
