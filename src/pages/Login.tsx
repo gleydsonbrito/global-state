@@ -31,6 +31,8 @@ function Login() {
 
       } catch (err) {
         setErro(`Algo inesperado aconteceu. ${err}`)
+      } finally {
+        setIsLoading(false)
       }
     }
     fetchLogin()
