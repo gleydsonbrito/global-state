@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
-import Main from '../pages/Main'
+import Main from '../pages/Principal'
 import ProductList from '../pages/ProductList'
 import Favoritos from '../pages/Favoritos';
 import ErrorPage from '../pages/Error';
