@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={product.title} 
           className="h-full object-contain"
         />
-        <span onClick={handleFavorite} className="cursos-pointer absolute top-2 left-2 bg-amber-100 text-amber-800 text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-sm">
+        <span onClick={handleFavorite} className="cursor-pointer absolute top-2 left-2 bg-amber-100 text-amber-800 text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-sm">
           {favorites.includes(product.id) ? '❤️' : '🩶'}
         </span>
         <span className="absolute top-2 right-2 bg-amber-100 text-amber-800 text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-sm">
