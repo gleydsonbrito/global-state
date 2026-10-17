@@ -1,10 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
 interface IFavoriteState {
   favorites: number[]
 }
-
 interface IFavoriteActions {
   addFavorite: (id: number) => void,
   removeFavorite: (id: number) => void
@@ -13,10 +11,10 @@ interface IFavoriteActions {
 type FavoriteStore = IFavoriteActions & IFavoriteState
 
 export const useFavoriteStore = create<FavoriteStore>()(
-  persist((set) => ({
+  persist(set => ({
     favorites: [],
     addFavorite: (id) =>
-      set((state) => {
+      set(state => {
         const exists = state.favorites.includes(id)
         if (exists) return state
 
@@ -31,6 +29,6 @@ export const useFavoriteStore = create<FavoriteStore>()(
       })
   }),
     {
-      name: "favorite-storage", // 3. Nome da chave que aparecerá no LocalStorage do navegador
+      name: "favorite-storage",
     }
 ))

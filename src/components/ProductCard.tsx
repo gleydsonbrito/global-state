@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import type IProduct from '../interfaces/types'
 import {useFavoriteStore} from '../store/useStore'
 
@@ -7,27 +6,17 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const favorites = useFavoriteStore(state => state.favorites)
-  const addFavorite = useFavoriteStore( state => state.addFavorite )
-  const removeFavorite = useFavoriteStore( state => state.removeFavorite )
+  const {
+    favorites, 
+    addFavorite,
+    removeFavorite } = useFavoriteStore(state => state)
 
-  useEffect(() => {
-    if(favorites.includes(product.id)) {
-      setFavorite(true)
-    }
-  }, [favorites])
-
-  const [favorite, setFavorite] = useState<boolean>(false)
-  
   function handleFavorite() {
-    setFavorite(prev => {
-      if(prev) {
+      if(favorites.includes(product.id)) {
         removeFavorite(product.id)
       }else {
         addFavorite(product.id)
       }
-      return !prev
-    })
   }
   return (
     <div className="w-[200px] bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow transition-transform duration-300 hover:scale-103">
@@ -38,7 +27,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           className="h-full object-contain"
         />
         <span onClick={handleFavorite} className="cursos-pointer absolute top-2 left-2 bg-amber-100 text-amber-800 text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-sm">
-          {favorite ? '❤️' : '🩶'}
+          {favorites.includes(product.id) ? '❤️' : '🩶'}
         </span>
         <span className="absolute top-2 right-2 bg-amber-100 text-amber-800 text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-sm">
           ★ {product.rating.toFixed(1)}
@@ -64,7 +53,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             Comprar
           </button>
         </div>
-
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export default function ProtectRoute({ children }: ProtectRouteProps) {
       alert('Usuário deve efetuar o login primeiro')
       navigate('/')
     }
-  }, [])
+  }, [navigate])
   return (
     <>
       {children}
